@@ -1,0 +1,22 @@
+spring:
+  cloud:
+    gateway:
+      discovery.locator:
+        enabled: true
+        lowerCaseServiceId: true
+      routes:
+      - id: jwt-api
+        uri: lb://JWT-APPLICATION
+        predicates:
+        - Path=/products/**,/user/**
+      
+  application:
+    name: CLOUD-API-GATEWAY
+    
+  main:
+    web-application-type: reactive  
+    
+    
+    
+server:
+  port: 2222
